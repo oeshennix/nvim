@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
   })
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'});
   use('nvim-treesitter/playground');
+  use('tpope/vim-fugitive')
   use {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -27,6 +28,7 @@ return require('packer').startup(function(use)
   }
 
   use 'neovim/nvim-lspconfig';
+  use 'hrsh7th/cmp-nvim-lsp-signature-help';
   use{'hrsh7th/cmp-nvim-lsp',
     requires={
       'hrsh7th/cmp-buffer',
