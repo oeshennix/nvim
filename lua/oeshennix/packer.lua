@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
       'hrsh7th/vim-vsnip',
     },
   };
+  use {
+    "williamboman/mason.nvim"
+  }
   use 'mbbill/undotree'
 
   --Luau stuff

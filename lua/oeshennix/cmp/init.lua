@@ -1,5 +1,6 @@
 settings=require("oeshennix.lsp");
 lspconfig=require('lspconfig');
+require("mason").setup();
 
 if(settings.config.startup)then
   for c,v in ipairs(settings.config.startup)do
