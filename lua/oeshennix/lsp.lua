@@ -6,8 +6,8 @@ local LSPConfigurationPath=vim.fn.stdpath('data')..'/oeshennix/lspconfig.toml';
 local ConfigFileBuffer=io.open(LSPConfigurationPath,"r");
 if(not ConfigFileBuffer)then
   print("no LSPConfigurationPath path found");
-  vim.uv.fs_mkdir(vim.fn.stdpath('data')..'/oeshennix',tonumber('644',8));
-  fd=vim.uv.fs_open(LSPConfigurationPath,"w",tonumber("644",8));
+  vim.uv.fs_mkdir(vim.fn.stdpath('data')..'/oeshennix',tonumber('700',8));
+  fd=vim.uv.fs_open(LSPConfigurationPath,"w",tonumber("600",8));
 
   vim.uv.fs_write(fd,"#lsp");
 
