@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
     "williamboman/mason.nvim"
   }
   use 'mbbill/undotree'
+  use 'oeshennix/ONNV'
 
   --Luau stuff
   --[=

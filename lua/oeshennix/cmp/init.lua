@@ -1,14 +1,20 @@
-settings=require("oeshennix.lsp");
-lspconfig=require('lspconfig');
+
+local succ,ONNV=pcall(require,"ONNV")
+if(not succ)then
+  return;
+end
+local config=ONNV.getConfig();
+
+local lspconfig=require('lspconfig');
 require("mason").setup();
 
-if(settings.config.startup)then
-  for c,v in ipairs(settings.config.startup)do
-    local options
-    if not(settings.config[v])then
+if(config.startup)then
+  for c,v in ipairs(config.startup)do
+    local options;
+    if not(config[v])then
       options={};
     else
-      options=settings.config[v].options;
+      options=config[v].options;
     end
     lspconfig[v].setup(options);
   end;
@@ -76,8 +82,4 @@ cmp.setup.cmdline(':', {
   }),
   matching = { disallow_symbol_nonprefix_matching = false }
 })
--- Set up lspconfig.
---[[
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-]]
+--]]

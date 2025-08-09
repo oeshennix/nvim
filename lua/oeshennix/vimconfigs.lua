@@ -7,6 +7,10 @@ o.nu = true;
 o.rnu = true;
 o.wrap = false;
 o.ruler = true;
+
+o.encoding="utf-8";
+o.fileencoding="utf-8";
+o.compatible=false;
 --[[
 Thanks to
 https://stackoverflow.com/questions/75665675/how-to-properly-source-use-lua-file-in-init-vim-config-for-neovim

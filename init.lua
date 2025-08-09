@@ -14,13 +14,14 @@ local packer_bootstrap = ensure_packer()
 require('oeshennix.packer');
 if(packer_bootstrap)then
   require('packer').sync();
+  print("Packer loading complete restart neovim");
 end;
-
 
 require('oeshennix');
 vim.cmd([[
 inoremap <S-Tab> <C-V><Tab>
 ]])
+
 vim.filetype.add({
   extension = {
     luau = "luau"
@@ -30,4 +31,4 @@ vim.filetype.add({
   }
 })
 
-require('oeshennix.cmp');
+require('oeshennix.ONNV');
