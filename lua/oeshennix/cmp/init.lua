@@ -3,26 +3,42 @@ local succ,ONNV=pcall(require,"ONNV")
 if(not succ)then
   return;
 end
-local config=ONNV.getConfig();
+local languageconfiguration=require("oeshennix.languageconfiguration");
 
-local lspconfig=require('lspconfig');
-require("mason").setup();
+--require("mason").setup();
+local config=ONNV.getConfig();
 
 if(config.startup)then
   for c,v in ipairs(config.startup)do
+    print(v);
     local options;
     if not(config[v])then
-      options={};
+      options=nil;
     else
-      options=config[v].options;
+      if(languageconfiguration.setup[v])then
+        options=languageconfiguration.setup[v](config[v])
+      else
+        options=config[v].options or nil; 
+      end
     end
-    lspconfig[v].setup(options);
+    if(options)then
+      vim.lsp.config(v,options);
+    end
+    vim.lsp.enable(v,true);
   end;
 end
 
 local cmp = require'cmp'
-
+vim.diagnostic.config({virtual_text=true});
 cmp.setup({
+--[[
+  formatting={
+    format=function(entry, vim_item)
+      vim_item.kind = "\u{e654}";
+      return vim_item
+    end
+  },
+]]
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -44,12 +60,12 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' }
-  }, {
-    { name = 'nvim_lsp_signature_help' }
-  }, {
+  },{
+    { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
-    { name = 'buffer' },
     { name = 'vsnip' }
+  },{
+    { name = 'buffer' }
   })
 })
 

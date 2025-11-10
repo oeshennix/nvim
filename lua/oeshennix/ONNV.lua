@@ -4,14 +4,16 @@ if(not succ)then
   return;
 end
 
+ONNV.setup()
 local succ,startupconfig=pcall(ONNV.retrieve,(vim.fn.stdpath("data").."/ONNV/startup.toml"))
 if(not succ or not startupconfig)then
   print("could not utilize ONNV startup");
 else
-  for c,v in ipairs(startupconfig.requires)do
-    dofile(startupconfig[v]);
+  if(startupconfig.requires)then
+    for c,v in ipairs(startupconfig.requires)do
+      dofile(startupconfig[v]);
+    end;
   end;
 end
 
-ONNV.setup()
 require("oeshennix.cmp");
