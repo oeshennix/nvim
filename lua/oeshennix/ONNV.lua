@@ -1,3 +1,4 @@
+print("hi");
 local succ,ONNV=pcall(require,"ONNV")
 if(not succ)then
   print("could not get");
@@ -5,7 +6,7 @@ if(not succ)then
 end
 
 ONNV.setup()
-local succ,startupconfig=pcall(ONNV.retrieve,(vim.fn.stdpath("data").."/ONNV/startup.toml"))
+local succ,startupconfig=pcall(ONNV.retrieve,(vim.fn.stdpath("config").."/ONNV/startup.toml"))
 if(not succ or not startupconfig)then
   print("could not utilize ONNV startup");
 else

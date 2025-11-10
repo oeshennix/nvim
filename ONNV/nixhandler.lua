@@ -1,7 +1,7 @@
 local ONNV=require("ONNV");
 
 local config=ONNV.getConfig();
-local nixconfig=ONNV.retrieve(vim.fn.stdpath("data").."/ONNV/nix/config.toml");
+local nixconfig=ONNV.retrieve(vim.fn.stdpath("config").."/ONNV/nix/config.toml");
 
 local ExecutableMap={}
 for c,v in ipairs(nixconfig.executables)do

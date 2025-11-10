@@ -1,0 +1,2 @@
+requires=["nixhandler"]
+"$nixhandler"=["path","$nvim(config)/ONNV/nixhandler.lua"]
