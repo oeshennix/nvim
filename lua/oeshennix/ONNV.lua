@@ -1,4 +1,3 @@
-print("hi");
 local succ,ONNV=pcall(require,"ONNV")
 if(not succ)then
   print("could not get");
