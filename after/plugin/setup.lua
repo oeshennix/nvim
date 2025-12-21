@@ -1,1 +1,2 @@
-require('oeshennix.ONNV');
+local ONNVconfig=require('nvimonnvconfig');
+ONNVconfig.run();

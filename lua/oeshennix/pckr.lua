@@ -1,17 +1,14 @@
 local pckr_path=vim.fn.stdpath("data").."/pckr/pckr.nvim"
 if not (vim.uv or vim.loop).fs_stat(pckr_path) then
   vim.fn.system({
-    'git',
-    'clone',
+    'git', 'clone',
     "--filter=blob:none",
-    'https://github.com/lewis6991/pckr.nvim',
-    pckr_path
+    'https://github.com/lewis6991/pckr.nvim', pckr_path
   })
 end
 vim.opt.rtp:prepend(pckr_path)
-
 require('pckr').add{
-  'wbthomason/packer.nvim',
+  'lewis6991/pckr.nvim',
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     requires = { 'nvim-lua/plenary.nvim' }
@@ -23,6 +20,8 @@ require('pckr').add{
       vim.cmd('colorscheme rose-pine-dawn')
     end
   },
+  'neovim/nvim-lspconfig',
+  'nvim-treesitter/nvim-treesitter',
 
   'tpope/vim-fugitive',
   { 
@@ -44,7 +43,23 @@ require('pckr').add{
   },
   "williamboman/mason.nvim",
   'mbbill/undotree',
-  'oeshennix/ONNV',
+  {
+    '/home/oeshennix/Documents/git/oeshennix-ONNV-config.nvim',
+    requires={
+      'oeshennix/ONNV',
+      '/home/oeshennix/Documents/git/nvim-ONNV-config.nvim'
+    },
+    config=function()
+      require('nvimonnvconfig').setup({
+        --installation_path=require('pckr.config').pack_dir.."/pack/pckr/opt/oeshennix-ONNV-configure.nvim"
+        installation_path='/home/oeshennix/Documents/git/nvim-ONNV-config.nvim',
+        installation_type='build-with-nix',
+      });
+      require('oeshennixonnvconfig').setup({
+        installation_path='/home/oeshennix/Documents/git/oeshennix-ONNV-config.nvim',
+      });
+    end
+  },
   --Luau stuff
   --[=[
   {
