@@ -11,6 +11,8 @@ o.ruler = true;
 o.encoding="utf-8";
 o.fileencoding="utf-8";
 o.compatible=false;
+--o.wildmenu=true;
+--o.wildmode="longest:full,full"
 --[[
 Thanks to
 https://stackoverflow.com/questions/75665675/how-to-properly-source-use-lua-file-in-init-vim-config-for-neovim
