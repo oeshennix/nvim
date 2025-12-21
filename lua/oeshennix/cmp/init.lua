@@ -1,34 +1,5 @@
-
-local succ,ONNV=pcall(require,"ONNV")
-if(not succ)then
-  return;
-end
-local languageconfiguration=require("oeshennix.languageconfiguration");
-
---require("mason").setup();
-local config=ONNV.getConfig();
-
-if(config.startup)then
-  for c,v in ipairs(config.startup)do
-    print(v);
-    local options;
-    if not(config[v])then
-      options=nil;
-    else
-      if(languageconfiguration.setup[v])then
-        options=languageconfiguration.setup[v](config[v])
-      else
-        options=config[v].options or nil; 
-      end
-    end
-    if(options)then
-      vim.lsp.config(v,options);
-    end
-    vim.lsp.enable(v,true);
-  end;
-end
-
 local cmp = require'cmp'
+
 vim.diagnostic.config({virtual_text=true});
 cmp.setup({
 --[[
@@ -68,7 +39,6 @@ cmp.setup({
     { name = 'buffer' }
   })
 })
-
 -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
 -- Set configuration for specific filetype.
 --[[ cmp.setup.filetype('gitcommit', {
@@ -98,4 +68,3 @@ cmp.setup.cmdline(':', {
   }),
   matching = { disallow_symbol_nonprefix_matching = false }
 })
---]]
