@@ -53,7 +53,8 @@ require('pckr').add{
       require('nvimonnvconfig').setup({
         --installation_path=require('pckr.config').pack_dir.."/pack/pckr/opt/oeshennix-ONNV-configure.nvim"
         installation_path='/home/oeshennix/Documents/git/nvim-ONNV-config.nvim',
-        installation_type='build-with-nix',
+        --installation_type='nix-flake',
+        installation_type='nix-flake',
       });
       require('oeshennixonnvconfig').setup({
         installation_path='/home/oeshennix/Documents/git/oeshennix-ONNV-config.nvim',
